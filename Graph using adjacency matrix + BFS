@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    int adj[20][20], visited[20] = {0}, queue[20], front = 0, rear = 0;
+
+    printf("Enter number of vertices: ");
+    if (scanf("%d", &n) != 1 || n <= 0 || n > 20) return 0;
+
+    printf("Enter adjacency matrix (%d x %d):\n", n, n);
+    for (i = 0; i < n; i++)
+        for (j = 0; j < n; j++)
+            scanf("%d", &adj[i][j]);
+
+    int start;
+    printf("Enter start vertex (0-%d): ", n - 1);
+    scanf("%d", &start);
+
+    visited[start] = 1;
+    queue[rear++] = start;
+
+    while (front < rear) {
+        int v = queue[front++];
+        printf("%d ", v);
+        for (i = 0; i < n; i++) {
+            if (adj[v][i] && !visited[i]) {
+                visited[i] = 1;
+                queue[rear++] = i;
+            }
+        }
+    }
+    printf("\n");
+    return 0;
+}
