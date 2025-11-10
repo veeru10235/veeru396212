@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter height (<=26): ");
+    if (scanf("%d", &n) != 1 || n <= 0 || n > 26) return 0;
+
+    for (i = 1; i <= n; i++) {
+        for (j = i; j < n; j++) printf(" ");
+        for (j = 1; j <= i; j++) printf("%c", 'A' + j - 1);
+        for (j = i - 1; j >= 1; j--) printf("%c", 'A' + j - 1);
+        printf("\n");
+    }
+    return 0;
+}
