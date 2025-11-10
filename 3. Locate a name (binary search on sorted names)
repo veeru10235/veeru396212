@@ -6,7 +6,7 @@ int main() {
     char names[100][100], target[100];
 
     printf("Enter number of names: ");
-    if (scanf("%d", &n) != 1 || n <= 0) return 0;
+    scanf("%d", &n);
 
     printf("Enter %d names (sorted alphabetically):\n", n);
     for (i = 0; i < n; i++) scanf("%s", names[i]);
