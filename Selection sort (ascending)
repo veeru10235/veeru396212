@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, min;
+    float a[100], t;
+
+    printf("Enter number of products: ");
+    if (scanf("%d", &n) != 1 || n <= 0) return 0;
+
+    printf("Enter %d prices:\n", n);
+    for (i = 0; i < n; i++) scanf("%f", &a[i]);
+
+    for (i = 0; i < n - 1; i++) {
+        min = i;
+        for (j = i + 1; j < n; j++) if (a[j] < a[min]) min = j;
+        t = a[i]; a[i] = a[min]; a[min] = t;
+    }
+
+    printf("Sorted:\n");
+    for (i = 0; i < n; i++) printf("%.2f ", a[i]);
+    return 0;
+}
