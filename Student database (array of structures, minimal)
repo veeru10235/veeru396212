@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+struct Student { int roll; char name[20]; char dept[20]; char sub[20]; int marks; };
+
+int main() {
+    int n, i;
+    struct Student s[100];
+
+    printf("Enter number of students: ");
+    if (scanf("%d", &n) != 1 || n <= 0) return 0;
+
+    printf("Enter roll name dept subject marks (space-separated):\n");
+    for (i = 0; i < n; i++)
+        scanf("%d %19s %19s %19s %d", &s[i].roll, s[i].name, s[i].dept, s[i].sub, &s[i].marks);
+
+    printf("Students:\n");
+    for (i = 0; i < n; i++)
+        printf("%d %s %s %s %d\n", s[i].roll, s[i].name, s[i].dept, s[i].sub, s[i].marks);
+
+    return 0;
+}
