@@ -5,7 +5,7 @@ int main() {
     float a[100], t;
 
     printf("Enter number of products: ");
-    if (scanf("%d", &n) != 1 || n <= 0) return 0;
+    scanf("%d", &n);
 
     printf("Enter %d prices:\n", n);
     for (i = 0; i < n; i++) scanf("%f", &a[i]);
