@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+void insertFront(struct Node** head, int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void deleteEnd(struct Node** head) {
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* temp = *head;
+
+    if (temp->next == NULL) {
+        printf("Deleted: %d\n", temp->data);
+        free(temp);
+        *head = NULL;
+        return;
+    }
+
+    while (temp->next->next != NULL)
+        temp = temp->next;
+
+    printf("Deleted: %d\n", temp->next->data);
+    free(temp->next);
+    temp->next = NULL;
+}
+
+void display(struct Node* head) {
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    printf("Linked List: ");
+    while (head != NULL) {
+        printf("%d -> ", head->data);
+        head = head->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+    int choice, value;
+
+    while (1) {
+        printf("\n1. Insert at Front\n2. Delete from End\n3. Display\n4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &value);
+                insertFront(&head, value);
+                break;
+            case 2:
+                deleteEnd(&head);
+                break;
+            case 3:
+                display(head);
+                break;
+            case 4:
+                exit(0);
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+    return 0;
+}
